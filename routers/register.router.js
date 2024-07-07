@@ -14,7 +14,6 @@ const ValidationArray = [
   body("lastName").isString().withMessage("lastName must be a string").notEmpty().withMessage("Last name must not be null"),
   body("email").isEmail().withMessage("Email must be unique and valid").notEmpty().withMessage("Email must not be null"),
   body("password").isString().withMessage("The password must be a string").notEmpty().withMessage("Password must not be null"),
-  body("phone").isString().withMessage("Phone must be a string")
 ]
 
 registerRouter.post("/register", ValidationArray, async (req, res) => {
@@ -31,6 +30,16 @@ registerRouter.post("/register", ValidationArray, async (req, res) => {
 
   // hashing the password
   const { firstName, lastName, email, password, phone } = req.body;
+
+  if (typeof phone !== "string") {
+    return res.status(422).json({errors: [
+        {
+            "field": "phone",
+            "message": "Phone must be a string"
+        }
+      ]
+    });
+  }
 
   const findUser = await prisma.user.findUnique({
     where: {

@@ -8,7 +8,7 @@ const jwt = require("jsonwebtoken");
 const request = require('supertest');
 const app = require('../server'); // Adjust the path to your server file
 
-describe('Auth API Tests', () => {
+describe('Register Auth API Tests', () => {
   it('should register a user successfully and return response', async () => {
     const user = {
       firstName: 'John',
@@ -108,42 +108,6 @@ describe('Auth API Tests', () => {
     ]
     });
   });
-
-  it("Should handle accessToken expiration", async () => {
-    // Create a user and get the access token
-    const user = {
-      email: 'ze@example.com',
-      password: 'password123',
-    };
-
-    const registerResponse = await request(app)
-      .post('/auth/login')
-      .send(user);
-
-    expect(registerResponse.status).toBe(200);
-    const { accessToken } = registerResponse.body.data;
-
-    // Decode the token to get its payload and check its expiration time
-    const decodedToken = jwt.decode(accessToken);
-    const tokenExpirationTime = decodedToken.exp * 1000; // Convert to milliseconds
-
-    // Set a timeout to wait for the token to expire
-    const currentTime = Date.now();
-    const waitTime = tokenExpirationTime - currentTime + 1000; // Add 1 second buffer
-    await new Promise((resolve) => setTimeout(resolve, waitTime));
-
-    // Attempt to access a protected route with the expired token
-    const protectedResponse = await request(app)
-      .get('/api/organisations') // Adjust to your protected route
-      .set('Authorization', `Bearer ${accessToken}`);
-
-    // Assert that the request is unauthorized due to expired token
-    expect(protectedResponse.status).toBe(403);
-    expect(protectedResponse.body).toEqual({
-      status: 403,
-      error: "Forbidden"
-    });
-  }, 190000);
 
   it("Should fail if any required input is missing and return the necessary response", async () => {
     const registerUser = {
@@ -273,5 +237,41 @@ describe('Login API Tests', () => {
       "message": "Authentication failed",
       "statusCode": 401
     });
-  })
+  });
+
+  it("Should handle accessToken expiration", async () => {
+    // Create a user and get the access token
+    const user = {
+      email: 'ze@example.com',
+      password: 'password123',
+    };
+
+    const registerResponse = await request(app)
+      .post('/auth/login')
+      .send(user);
+
+    expect(registerResponse.status).toBe(200);
+    const { accessToken } = registerResponse.body.data;
+
+    // Decode the token to get its payload and check its expiration time
+    const decodedToken = jwt.decode(accessToken);
+    const tokenExpirationTime = decodedToken.exp * 1000; // Convert to milliseconds
+
+    // Set a timeout to wait for the token to expire
+    const currentTime = Date.now();
+    const waitTime = tokenExpirationTime - currentTime + 1000; // Add 1 second buffer
+    await new Promise((resolve) => setTimeout(resolve, waitTime));
+
+    // Attempt to access a protected route with the expired token
+    const protectedResponse = await request(app)
+      .get('/api/organisations') // Adjust to your protected route
+      .set('Authorization', `Bearer ${accessToken}`);
+
+    // Assert that the request is unauthorized due to expired token
+    expect(protectedResponse.status).toBe(403);
+    expect(protectedResponse.body).toEqual({
+      status: 403,
+      error: "Forbidden"
+    });
+  }, 3610000);
 });
