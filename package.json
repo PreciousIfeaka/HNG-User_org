@@ -1,0 +1,35 @@
+{
+  "name": "hng-user_org",
+  "version": "1.0.0",
+  "description": "HNG task 2",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "jest",
+    "watch": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "HNG-User_org"
+  },
+  "author": "PreciousIfeaka",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^5.16.1",
+    "bcrypt": "^5.1.1",
+    "chai-http": "^5.0.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-validator": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "uuidv4": "^6.2.13"
+  },
+  "devDependencies": {
+    "chai": "^5.1.1",
+    "jest": "^29.7.0",
+    "mocha": "^10.6.0",
+    "nodemon": "^3.1.4",
+    "prisma": "^5.16.1",
+    "supertest": "^7.0.0"
+  }
+}
