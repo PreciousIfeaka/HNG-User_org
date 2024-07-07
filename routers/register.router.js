@@ -2,7 +2,6 @@ const express = require("express");
 const { PrismaClient } = require("@prisma/client");
 const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcrypt");
-// const jwt = require("jsonwebtoken");
 const { generateAccessToken } = require("../auth");
 require("dotenv").config();
 
@@ -45,7 +44,7 @@ registerRouter.post("/register", ValidationArray, async (req, res) => {
       message: "User already exists"
     })
   }
-  
+
   const salt = await bcrypt.genSalt();
   const hashedPassword = await bcrypt.hash(password, salt);
 

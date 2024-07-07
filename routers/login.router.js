@@ -1,5 +1,6 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
+const { body, validationResult } = require("express-validator");
 const { PrismaClient } = require("@prisma/client");
 require("dotenv").config();
 const { generateAccessToken } = require("../auth");
@@ -8,7 +9,23 @@ const { generateAccessToken } = require("../auth");
 const loginRouter = express();
 const prisma = new PrismaClient();
 
-loginRouter.post("/login", async (req, res) => {
+const validationArray = [
+  body("email").notEmpty().withMessage("Email must not be null").isEmail().withMessage("Email must be unique and valid"),
+  body("password").notEmpty().withMessage("Password must not be null").isString().withMessage("The password must be a string")
+]
+
+loginRouter.post("/login", validationArray, async (req, res) => {
+  // input validation
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).json({
+      errors: errors.array().map(err => ({
+        field: err.path,
+        message: err.msg
+      }))
+    });
+  }
+
   const { email, password } = req.body;
   try {
     const findUser = await prisma.user.findUnique({
