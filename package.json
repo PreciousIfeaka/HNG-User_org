@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "test": "jest",
-    "watch": "nodemon server.js"
+    "watch": "nodemon server.js",
+    "postinstall": "prisma generate"
   },
   "repository": {
     "type": "git",
