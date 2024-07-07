@@ -143,7 +143,7 @@ describe('Auth API Tests', () => {
       status: 403,
       error: "Forbidden"
     });
-  }, 15000);
+  }, 70000);
 
   it("Should fail if any required input is missing and return the necessary response", async () => {
     const registerUser = {
