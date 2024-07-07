@@ -31,7 +31,7 @@ registerRouter.post("/register", ValidationArray, async (req, res) => {
   // hashing the password
   const { firstName, lastName, email, password, phone } = req.body;
 
-  if (typeof phone !== "string") {
+  if (phone && ((typeof phone) !== "string")) {
     return res.status(422).json({errors: [
         {
             "field": "phone",
