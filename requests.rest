@@ -1,4 +1,4 @@
-POST http://localhost:8001/auth/register
+POST https://hng-task-2-production-d672.up.railway.app
 Content-Type: application/json
 
 {
@@ -28,5 +28,5 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicHJlY2lvdXNzZWVtbWFudWVsQGdtYWl
 
 ###
 
-GET http://localhost:8001/api/organisations
+GET https://hng-task-2-production-d672.up.railway.app/api/organisations
 

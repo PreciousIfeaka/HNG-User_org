@@ -146,7 +146,7 @@ organisationRouter.post("/organisations/:orgId/users", authenticateToken, validA
     console.log(updatedOrg);
     return res.status(200).json(respObj);
   } catch (err) {
-    return res.status({ error: 'An error occurred while adding the user to the organisation.' });
+    return res.status(400).json({ error: 'An error occurred while adding the user to the organisation.' });
   }
 })
 
