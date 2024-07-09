@@ -20,6 +20,11 @@ app.use("/api/users", userRouter);
 
 app.use("/api", organisationsRouter);
 
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger-output.json');
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
