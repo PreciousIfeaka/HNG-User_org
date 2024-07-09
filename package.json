@@ -4,11 +4,10 @@
   "description": "HNG task 2",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node swagger.js && node server.js",
     "test": "jest",
     "watch": "nodemon server.js",
-    "postinstall": "prisma generate",
-    "swagger": "node swagger.js"
+    "postinstall": "prisma generate"
   },
   "repository": {
     "type": "git",
