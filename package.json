@@ -4,7 +4,8 @@
   "description": "HNG task 2",
   "main": "server.js",
   "scripts": {
-    "start": "node swagger.js && node server.js",
+    "prestart": "node swagger.js",
+    "start": "node server.js",
     "test": "jest",
     "watch": "nodemon server.js",
     "postinstall": "prisma generate"
