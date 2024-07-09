@@ -5,6 +5,8 @@ const registerRouter = require("./routers/register.router");
 const userRouter = require("./routers/user.router");
 const loginRouter = require("./routers/login.router");
 const organisationsRouter = require("./routers/organisations.router");
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger-output.json');
 const PORT = process.env.SERVER_PORT;
 
 
@@ -19,9 +21,6 @@ app.use("/auth", loginRouter);
 app.use("/api/users", userRouter);
 
 app.use("/api", organisationsRouter);
-
-const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./swagger-output.json');
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 

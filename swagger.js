@@ -11,6 +11,6 @@ const doc = {
 const outputFile = "./swagger-output.json";
 const routes = ["./server.js"];
 
-swaggerAutogen(outputFile, endpointsFiles, doc).then(() => {
+swaggerAutogen(outputFile, routes, doc).then(() => {
   require("./server.js");
 })
