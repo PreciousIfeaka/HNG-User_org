@@ -6,6 +6,9 @@
       "use": "@vercel/node"
     }
   ],
-  "routes": [{  "src": "/.*", "dest": "/server.js" }],
+  "routes": [
+    { "src": "/api-docs", "dest": "/server.js" },
+    {  "src": "/.*", "dest": "/server.js" }
+],
   "buildCommand": "npm run vercel-build"
 }
