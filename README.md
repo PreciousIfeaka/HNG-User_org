@@ -4,7 +4,7 @@
 
 **HNG-User-org** is a backend project for user authentication and organisation management. It allows users to register, log in, and manage organisations they belong to or have created. This project is built using Node.js, Express, and PostgreSQL with Prisma ORM.
 
-## Acceptance Criteria
+## Task Criteria
 
 The project adheres to the following criteria:
 
@@ -167,8 +167,8 @@ npm test
 - Node.js
 - Express
 - PostgreSQL
-- Sequelize ORM
-- JWT for authentication
+- Prisma ORM
+- JWT from jsonwebtoken for authentication
 
 ## Acknowledgements
 Thanks to the HNG team for this task
