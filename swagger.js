@@ -5,7 +5,7 @@ const doc = {
     title: "HNG User-Organisation API",
     description: "The API contains endpoints for the interaction between users and organisations"
   },
-  host: "https://hng-user-org.vercel.app"
+  host: "https://hng-user-org.vercel.app/"
 };
 
 const outputFile = "./swagger-output.json";

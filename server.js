@@ -1,7 +1,6 @@
 // const { PrismaClient } = require("@prisma/client");
 require("dotenv").config();
 const cors = require("cors");
-const path = require("path");
 const express = require("express");
 const swaggerUi = require('swagger-ui-express');
 const userRouter = require("./routers/user.router");
@@ -27,7 +26,7 @@ app.use("/api/users", userRouter);
 
 app.use("/api", organisationsRouter);
 
-const swaggerDocument = require(path.join(__dirname, "swagger-output.json"));
+const swaggerDocument = require("./swagger-output.json");
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(PORT, () => {
