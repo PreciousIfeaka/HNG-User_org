@@ -8,7 +8,8 @@
     "start": "node server.js",
     "test": "jest",
     "watch": "nodemon server.js",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "vercel-build": "npm run prestart"
   },
   "repository": {
     "type": "git",

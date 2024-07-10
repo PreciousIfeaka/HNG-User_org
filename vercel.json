@@ -1,5 +1,11 @@
 {
   "version": 2,
-  "buildCommand": "npm run prestart",
-  "routes": [{  "src": "/.*", "dest": "/server.js" }]
+  "builds": [
+    {
+      "src": "/server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [{  "src": "/.*", "dest": "/server.js" }],
+  "buildCommand": "npm run vercel-build"
 }
