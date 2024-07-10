@@ -1,5 +1,6 @@
 // const { PrismaClient } = require("@prisma/client");
 require("dotenv").config();
+const cors = require("cors");
 const path = require("path");
 const express = require("express");
 const swaggerUi = require('swagger-ui-express');
