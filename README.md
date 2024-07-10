@@ -9,7 +9,7 @@
 The project adheres to the following criteria:
 
 1. **User Model:**
-   - `userId` (string, unique)
+   - `userId` (string, unique uuid)
    - `firstName` (string, required)
    - `lastName` (string, required)
    - `email` (string, unique, required)
@@ -30,7 +30,7 @@ The project adheres to the following criteria:
    - On registration, a default organisation is created with the user’s first name.
 
 5. **Organisation Model:**
-   - `orgId` (string, unique)
+   - `orgId` (string, unique uuid)
    - `name` (string, required)
    - `description` (string)
 
