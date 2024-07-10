@@ -2,7 +2,7 @@
 
 ## Overview
 
-**HNG-User-org** is a backend project for user authentication and organisation management. It allows users to register, log in, and manage organisations they belong to or have created. This project is built using Node.js, Express, and PostgreSQL with Prisma ORM.
+**HNG-User-org** is a backend API project for user authentication and organisation management. It allows users to register, log in, and manage organisations they belong to or have created. This project is built using Node.js, Express, and PostgreSQL with Prisma ORM.
 
 ## Task Criteria
 
