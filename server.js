@@ -40,7 +40,10 @@ app.use(
 
 
 app.use("*", async (req, res) => {
-  res.status(401).send("Unauthorized");
+  res.status(401).send({
+    status: 401,
+    error: "Unauthorized"
+  });
 });
 
 app.listen(PORT, () => {
