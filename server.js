@@ -38,6 +38,11 @@ app.use(
       ".swagger-ui .opblock .opblock-summary-path-description-wrapper { align-items: center; display: flex; flex-wrap: wrap; gap: 0 10px; padding: 0 10px; width: 100%; }",
     customCssUrl: CSS_URL }));
 
+
+app.use("*", async (req, res) => {
+  res.status(401).send("Unauthorized");
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
