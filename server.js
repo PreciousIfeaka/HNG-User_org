@@ -31,11 +31,6 @@ app.use(
 app.use(express.json());
 app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-app.use((req, res, _next) => {
-  const message = `Route not found: ${req.originalUrl}`;
-  res.status(404).json({ success: false, status: 404, message });
-});
-
 app.use("/auth", registerRouter);
 
 app.use("/auth", loginRouter);
@@ -51,6 +46,11 @@ app.use("/", (_req, res) => {
 app.use("/openapi.json", (_req, res) => {
   res.setHeader("Content-Type", "application/json");
   res.send(swaggerSpec);
+});
+
+app.use((req, res, _next) => {
+  const message = `Route not found: ${req.originalUrl}`;
+  res.status(404).json({ success: false, status: 404, message });
 });
 
 app.listen(PORT, () => {
