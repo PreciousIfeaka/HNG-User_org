@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 
 const jwt = require("jsonwebtoken");
 const request = require('supertest');
-const app = require('../server'); // Adjust the path to your server file
+const app = require('../app'); // Adjust the path to your server file
 
 describe('Register Auth API Tests', () => {
   it('should register a user successfully and return response', async () => {
