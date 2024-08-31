@@ -21,13 +21,17 @@ const swaggerDefinition = {
   ],
   tags: [
     {
-      name: "default",
-      description: "A list of all default routes",
-    },
-    {
       name: "Authentication",
       description: "A list of routes for Authentication",
     },
+    {
+      name: "Orgnaisations",
+      description: "A list of routes for Organisation resources",
+    },
+    {
+      name: "Users",
+      description: "A list of routes for Users resources",
+    }
   ],
   components: {
     securitySchemes: {
