@@ -7,7 +7,6 @@ const userRouter = require("./routers/user.router");
 const loginRouter = require("./routers/login.router");
 const registerRouter = require("./routers/register.router");
 const organisationsRouter = require("./routers/organisations.router");
-const swaggerUi = require("swagger-ui-express");
 const swaggerSpec = require("./config/swagger.config");
 
 
