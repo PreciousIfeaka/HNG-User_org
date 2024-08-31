@@ -52,9 +52,9 @@ const swaggerDefinition = {
 const options = {
   swaggerDefinition,
   apis: [
-    "./routers/*.js",
-    "./controllers/*.js",
-    "./docs/*.js",
+    "../routers/*.js",
+    "../controllers/*.js",
+    "../docs/*.js",
   ],
 };
 
