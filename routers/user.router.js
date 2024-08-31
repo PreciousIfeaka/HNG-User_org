@@ -10,10 +10,8 @@ userRouter.get("/:id", authenticateToken, async (req, res) => {
   const userid = req.params.id;
 
   try {
-    // Extract user data from token
     const userFromToken = req.user;
 
-    // Find the user and return the organisations
     const userWithOrganisations = await prisma.user.findUnique({
       where: {
         userId: userid,
@@ -30,10 +28,8 @@ userRouter.get("/:id", authenticateToken, async (req, res) => {
       });
     }
 
-    // Organisations id of the orgs the user is a member of
     const orgsId = userWithOrganisations.organisations.map((org) => org.orgId);
 
-    // get my profile and organisations
     const myData = await prisma.user.findUnique({
       where: {email: userFromToken.email},
       include: {
@@ -41,16 +37,14 @@ userRouter.get("/:id", authenticateToken, async (req, res) => {
       }
     });
 
-    // get my orgs Ids
     const myOrgsIds = myData.organisations.map((org) => org.orgId);
 
-    // Find common orgs Ids
     const commonOrgsIds = orgsId.filter(orgId => myOrgsIds.includes(orgId));
 
     if (commonOrgsIds) {
       const userObj = {
         status: "success",
-        message: "List of user data",
+        message: "Successfully retrieved user data",
         data: {
           userId: userid,
           firstName: userWithOrganisations.firstName,
@@ -61,7 +55,7 @@ userRouter.get("/:id", authenticateToken, async (req, res) => {
       }
       return res.status(200).json(userObj);
     } else {
-      return res.status(404).json({
+      return res.status(403).json({
         status: "Forbiddden",
         message: "Not Authorized"
       })

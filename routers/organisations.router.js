@@ -127,7 +127,7 @@ organisationRouter.post("/organisations/:orgId/users", authenticateToken, validA
   const { userId } = req.body;
 
   try {
-    const updatedOrg = await prisma.organisation.update({
+    await prisma.organisation.update({
       where: {
         orgId: orgId,
       },
@@ -143,7 +143,6 @@ organisationRouter.post("/organisations/:orgId/users", authenticateToken, validA
       status: "success",
       message: "User added to organisation successfully",
     }
-    console.log(updatedOrg);
     return res.status(200).json(respObj);
   } catch (err) {
     return res.status(400).json({ error: 'An error occurred while adding the user to the organisation.' });

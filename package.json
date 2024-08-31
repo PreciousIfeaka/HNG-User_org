@@ -26,7 +26,8 @@
     "express-validator": "^7.1.0",
     "jsonwebtoken": "^9.0.2",
     "swagger-autogen": "^2.23.7",
-    "swagger-ui-express": "^4.3.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^4.6.3",
     "uuidv4": "^6.2.13"
   },
   "devDependencies": {
