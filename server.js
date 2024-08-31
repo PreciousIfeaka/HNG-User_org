@@ -31,6 +31,11 @@ app.use(
 app.use(express.json());
 app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
+app.use((req, res, _next) => {
+  const message = `Route not found: ${req.originalUrl}`;
+  res.status(404).json({ success: false, status: 404, message });
+});
+
 app.use("/auth", registerRouter);
 
 app.use("/auth", loginRouter);
@@ -39,14 +44,11 @@ app.use("/api/users", userRouter);
 
 app.use("/api", organisationsRouter);
 
-app.use("*", async (req, res) => {
-  res.status(401).send({
-    status: 401,
-    error: "Unauthorized"
-  });
-});
+app.use("/", (_req, res) => {
+  res.json({message: "I am the Express API responding for HNG user-org project"});
+})
 
-app.use("/openapi.json", (req, res) => {
+app.use("/openapi.json", (_req, res) => {
   res.setHeader("Content-Type", "application/json");
   res.send(swaggerSpec);
 });
