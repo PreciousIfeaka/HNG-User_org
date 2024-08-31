@@ -7,11 +7,11 @@
     }
   ],
   "routes": [
-    { "src": "/api/docs",
-      "dest": "/server.js"
+    { "src": "/api/docs/(.*)",
+      "dest": "/api/docs/$1"
     },
     { 
       "src": "/.*", "dest": "/server.js"
     }
-]
+  ]
 }

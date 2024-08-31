@@ -46,7 +46,7 @@ app.use("*", async (req, res) => {
   });
 });
 
-app.use("/openapi.json", (_req, res) => {
+app.use("/openapi.json", (req, res) => {
   res.setHeader("Content-Type", "application/json");
   res.send(swaggerSpec);
 });
