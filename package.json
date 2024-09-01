@@ -4,7 +4,6 @@
   "description": "HNG task 2",
   "main": "server.js",
   "scripts": {
-    "prestart": "node swagger.js",
     "start": "node server.js",
     "test": "jest",
     "watch": "nodemon server.js",

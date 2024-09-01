@@ -11,13 +11,13 @@ const swaggerDefinition = {
   },
   servers: [
     {
-      url: `http://localhost:${process.env.SERVER_PORT}/`,
-      description: "Local server",
-    },
-    {
       url: "https://hng-user-org.vercel.app/",
       description: "Live server",
     },
+    {
+      url: `http://localhost:${process.env.SERVER_PORT}/`,
+      description: "Local server",
+    }
   ],
   tags: [
     {
@@ -25,7 +25,7 @@ const swaggerDefinition = {
       description: "A list of routes for Authentication",
     },
     {
-      name: "Orgnaisations",
+      name: "Organisations",
       description: "A list of routes for Organisation resources",
     },
     {
@@ -52,12 +52,10 @@ const swaggerDefinition = {
 const options = {
   swaggerDefinition,
   apis: [
-    "../routers/*.js",
-    "../controllers/*.js",
-    "../docs/*.js",
+    "./docs/*.js",
   ],
 };
 
-const specs = swaggerJsdoc(options);
+const swaggerSpec = swaggerJsdoc(options);
 
-module.exports = specs;
+module.exports = { swaggerSpec };
