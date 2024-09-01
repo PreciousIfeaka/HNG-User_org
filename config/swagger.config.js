@@ -1,5 +1,6 @@
 const swaggerJsdoc = require("swagger-jsdoc");
 const { version } = require("../package.json");
+const path = require("path");
 require("dotenv").config();
 
 const swaggerDefinition = {
@@ -52,7 +53,7 @@ const swaggerDefinition = {
 const options = {
   swaggerDefinition,
   apis: [
-    "./docs/*.js",
+    path.resolve(__dirname, "../docs/*.js"),
   ],
 };
 
