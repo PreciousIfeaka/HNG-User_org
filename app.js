@@ -1,13 +1,13 @@
 require("dotenv").config();
 const cors = require("cors");
 const express = require("express");
+const path = require("path");
 const swaggerUi = require('swagger-ui-express');
 const userRouter = require("./routers/user.router");
 const loginRouter = require("./routers/login.router");
 const registerRouter = require("./routers/register.router");
 const organisationsRouter = require("./routers/organisations.router");
 const { swaggerSpec } = require("./config/swagger.config");
-const { fileURLToPath } = require("url");
 
 const app = express();
 
@@ -26,9 +26,6 @@ app.use(
 );
 
 app.use(express.json());
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 const __swaggerDistPath = path.join(
   __dirname,
   "node_modules",
