@@ -7,6 +7,7 @@ const loginRouter = require("./routers/login.router");
 const registerRouter = require("./routers/register.router");
 const organisationsRouter = require("./routers/organisations.router");
 const { swaggerSpec } = require("./config/swagger.config");
+const { fileURLToPath } = require("url");
 
 const app = express();
 
@@ -25,7 +26,15 @@ app.use(
 );
 
 app.use(express.json());
-app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const __swaggerDistPath = path.join(
+  __dirname,
+  "node_modules",
+  "swagger-ui-dist"
+);
+app.use("/api/docs", express.static(__swaggerDistPath, { index: false }), swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use("/auth", registerRouter);
 
