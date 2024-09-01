@@ -42,7 +42,7 @@ app.use("/api/users", userRouter);
 app.use("/api", organisationsRouter);
 
 app.get("/", (req, res) => {
-  res.json({message: "I am the Express API responding for HNG user-org project"});
+  res.json({message: "I am the Express API responding for HNG user-org project. Go to /api/docs to see the documentation"});
 })
 
 app.use("/openapi.json", (req, res) => {
