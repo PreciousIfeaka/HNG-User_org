@@ -53,7 +53,9 @@ const swaggerDefinition = {
 const options = {
   swaggerDefinition,
   apis: [
-    path.resolve(__dirname, "../docs/*.js"),
+    path.resolve(__dirname, "../docs/auth.js"),
+    path.resolve(__dirname, "../docs/organisations.js"),
+    path.resolve(__dirname, "../docs/users.js"),
   ],
 };
 
